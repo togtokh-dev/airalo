@@ -1,9 +1,8 @@
 import { config } from "./";
-import { axiosMasterMain } from "axios-master";
+import { axiosMasterLogger } from "axios-master";
 import FormData from "form-data";
 import axios, { AxiosResponse, AxiosError } from "axios";
 import { getToken } from "./auth";
-import { json } from "stream/consumers";
 
 type ApiResponse<T> = {
   data: T;
@@ -34,7 +33,7 @@ export const Balance = async (): Promise<{
           currency: string;
         };
       };
-    }> = await axiosMasterMain(
+    }> = await axiosMasterLogger(
       {
         method: "GET",
         maxBodyLength: Infinity,

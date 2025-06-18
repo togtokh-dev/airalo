@@ -1,5 +1,5 @@
 import { config } from "./";
-import { axiosMasterMain } from "axios-master";
+import { axiosMasterLogger } from "axios-master";
 import FormData from "form-data";
 import axios, { AxiosResponse, AxiosError } from "axios";
 
@@ -26,11 +26,12 @@ const TOKEN = async (auth: AuthType): Promise<TokenResponse> => {
     data.append("client_id", auth.client_id);
     data.append("client_secret", auth.client_secret);
     data.append("grant_type", "client_credentials");
+
     const response: ApiResponse<{
       token_type: string;
       expires_in: number;
       access_token: string;
-    }> = await axiosMasterMain(
+    }> = await axiosMasterLogger(
       {
         method: "POST",
         url: `${config.host}/v2/token`,
@@ -38,6 +39,7 @@ const TOKEN = async (auth: AuthType): Promise<TokenResponse> => {
           Accept: "application/json",
           ...data.getHeaders(),
         },
+        data: data,
       },
       {
         name: "Token",
@@ -50,6 +52,7 @@ const TOKEN = async (auth: AuthType): Promise<TokenResponse> => {
 
     if (response?.data?.access_token) {
       config.token = response?.data?.access_token;
+      config.auth = auth;
       return {
         success: true,
         message: "Token retrieved successfully.",
@@ -77,7 +80,7 @@ const TOKEN = async (auth: AuthType): Promise<TokenResponse> => {
 
 export const getToken = async (): Promise<string> => {
   try {
-    let data = new FormData();
+    const data = new FormData();
     data.append("client_id", config.auth.client_id);
     data.append("client_secret", config.auth.client_secret);
     data.append("grant_type", "client_credentials");
@@ -85,7 +88,7 @@ export const getToken = async (): Promise<string> => {
       token_type: string;
       expires_in: number;
       access_token: string;
-    }> = await axiosMasterMain(
+    }> = await axiosMasterLogger(
       {
         method: "POST",
         url: `${config.host}/v2/token`,
@@ -93,6 +96,7 @@ export const getToken = async (): Promise<string> => {
           Accept: "application/json",
           ...data.getHeaders(),
         },
+        data: data,
       },
       {
         name: "Token",

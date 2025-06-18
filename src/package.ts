@@ -1,9 +1,9 @@
 import { config } from ".";
-import { axiosMasterMain } from "axios-master";
+import { axiosMasterLogger } from "axios-master";
 import FormData from "form-data";
 import axios, { AxiosResponse, AxiosError } from "axios";
 import { getToken } from "./auth";
-import { json } from "stream/consumers";
+import { CountryData } from "./types/package";
 
 type ApiResponse<T> = {
   data: T;
@@ -14,27 +14,11 @@ type ApiResponse<T> = {
 
 export const Packages = async (): Promise<{
   success: boolean;
-  data: {
-    balances: {
-      name: "balance";
-      availableBalance: {
-        amount: number;
-        currency: string;
-      };
-    };
-  } | null;
+  data: CountryData[];
   message: string;
 }> => {
   try {
-    const result: ApiResponse<{
-      balances: {
-        name: "balance";
-        availableBalance: {
-          amount: number;
-          currency: string;
-        };
-      };
-    }> = await axiosMasterMain(
+    const result: ApiResponse<CountryData[]> = await axiosMasterLogger(
       {
         method: "GET",
         maxBodyLength: Infinity,
@@ -57,7 +41,7 @@ export const Packages = async (): Promise<{
 
     return {
       success: true,
-      data: result?.data || null,
+      data: result.data || null,
       message: "Successfully",
     };
   } catch (error) {

@@ -21,7 +21,7 @@ const ObjectId = function () {
 export const config: {
   token: string;
   env: "PROD" | "STAGING";
-  host: string; //https://partners-api.airalo.com
+  host: string; // https://sandbox-partners-api.airalo.com
   auth: {
     client_id: string;
     client_secret: string;
@@ -30,7 +30,7 @@ export const config: {
 } = {
   token: "",
   env: "STAGING",
-  host: "https://qams-api.toki.mn", // https://qams-api.toki.mn, https://ms-api.toki.mn
+  host: "https://sandbox-partners-api.airalo.com", // https://sandbox-partners-api.airalo.com, https://partners-api.airalo.com
   auth: {
     client_id: "",
     client_secret: "",
@@ -58,4 +58,5 @@ export default {
   setHost,
   setLogger,
 };
-export { default as Packages } from "./packages";
+export { default as Package } from "./package";
+export { default as Order } from "./order";
