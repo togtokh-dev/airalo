@@ -1,6 +1,6 @@
 {
   "name": "airalo-sdk-type",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "UNOFFICIAL AIRALO API INTEGRATION FOR JAVASCRIPT/TYPESCRIPT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

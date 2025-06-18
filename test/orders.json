@@ -1,0 +1,44 @@
+{
+  "id": 731579,
+  "code": "20250618-731579",
+  "currency": "USD",
+  "package_id": "chinacom-7days-1gb",
+  "quantity": 1,
+  "type": "sim",
+  "description": null,
+  "esim_type": "Prepaid",
+  "validity": 7,
+  "package": "Chinacom-1 GB - 7 Days",
+  "data": "1 GB",
+  "price": 5,
+  "created_at": "2025-06-18 07:01:38",
+  "manual_installation": "<p><b>eSIM name:</b> Chinacom</p><p><b>Coverage: </b>China</p><p><b>To manually activate the eSIM on your eSIM capable device:</b><br></p><ol><li>Settings > Cellular/Mobile > Add Cellular/Mobile Plan.</li><li>Manually enter the SM-DP+ Address and activation code.</li><li>Confirm eSIM plan details.</li><li>Label the eSIM.</li></ol><p><b>To access Data:</b></p><ol><li>Locate the APN settings in your settings menu.</li><li>Update the APN to \"globaldata\".</li><li>Enable data roaming.</li></ol>",
+  "qrcode_installation": "<p><b>eSIM name:</b> Chinacom</p><p><b>Coverage: </b>China</p><p><b>To activate the eSIM by scanning the QR code on your eSIM capable device you need to print or display this QR code on other device:</b></p><ol><li>Settings > Cellular/Mobile > Add Cellular/Mobile Plan.</li><li>Scan QR code.</li><li>Confirm eSIM plan details.</li><li>Label the eSIM.</li></ol><p><b>To access Data:</b></p><ol><li>Locate the APN settings in your settings menu.</li><li>Update the APN to \"globaldata\".</li><li>Enable data roaming.</li></ol>",
+  "installation_guides": {
+    "en": "https://www.airalo.com/help/getting-started-with-airalo"
+  },
+  "text": null,
+  "voice": null,
+  "net_price": 1.2,
+  "brand_settings_name": null,
+  "sims": [
+    {
+      "id": 875770,
+      "created_at": "2025-06-18 07:01:38",
+      "iccid": "8910300000033289733",
+      "lpa": "consumer.e-sim.global",
+      "imsis": null,
+      "matching_id": "TN20250226100852B7F4BA2B",
+      "qrcode": "LPA:1$consumer.e-sim.global$TN20250226100852B7F4BA2B",
+      "qrcode_url": "https://www.airalo.com/qr?expires=1836543698&id=49783716&signature=7b053c6e035acbd9986cd5ffd170c2614a2c5624b303c6d5c931fd7c3296f714",
+      "airalo_code": null,
+      "apn_type": "manual",
+      "apn_value": "globaldata",
+      "is_roaming": true,
+      "confirmation_code": null,
+      "apn": {},
+      "msisdn": null,
+      "direct_apple_installation_url": "https://esimsetup.apple.com/esim_qrcode_provisioning?carddata=LPA:1$consumer.e-sim.global$TN20250226100852B7F4BA2B"
+    }
+  ]
+}

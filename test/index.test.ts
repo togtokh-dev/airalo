@@ -42,11 +42,11 @@ describe("Airalo module", () => {
     }
 
     const data = await Order.SubmitOrder({
-      quantity: "2",
-      package_id: firstPackageId,
+      quantity: "1",
+      package_id: "chinacom-7days-1gb",
       type: "sim",
       description: "Test Order from Jest",
-      brand_settings_name: "our perfect brand",
+      // brand_settings_name: "our perfect brand",
     });
 
     console.log("Order Response:", data.data);

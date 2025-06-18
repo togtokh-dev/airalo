@@ -15,7 +15,7 @@ type ApiResponse<T> = {
 export const SubmitOrder = async (body: {
   quantity: string; //Required. The quantity of items in the order. Maximum of 50.
   package_id: string; //Required. The package ID associated with the order. You can obtain this from the "Packages / Get Packages" endpoint.
-  type: string; //Optional. The only possible value for this endpoint is "sim". If left empty, default "sim" value will be used.
+  type?: string; //Optional. The only possible value for this endpoint is "sim". If left empty, default "sim" value will be used.
   description?: string; //Optional. A custom description for the order, which can help you identify it later.
   brand_settings_name?: string; //Nullable. The definition under what brand the eSIM should be shared. Null for unbranded.
 }): Promise<{
@@ -26,11 +26,12 @@ export const SubmitOrder = async (body: {
   try {
     const data = new FormData();
 
-    data.append("client_id", config.auth.client_id);
     data.append("quantity", body.quantity);
     data.append("package_id", body.package_id);
-    data.append("type", body.type);
 
+    if (body.type) {
+      data.append("type", body.type);
+    }
     if (body.description) {
       data.append("description", body.description);
     }
@@ -38,6 +39,17 @@ export const SubmitOrder = async (body: {
     if (body.brand_settings_name) {
       data.append("brand_settings_name", body.brand_settings_name);
     }
+    console.log({
+      method: "POST",
+      maxBodyLength: Infinity,
+      url: `${config.host}/v2/orders`,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${config.token}`,
+      },
+      data: data,
+    });
     const result: ApiResponse<Order> = await axiosMasterLogger(
       {
         method: "POST",
@@ -45,8 +57,8 @@ export const SubmitOrder = async (body: {
         url: `${config.host}/v2/orders`,
         headers: {
           Accept: "application/json",
-          "Content-Type": "application/json",
           Authorization: `Bearer ${config.token}`,
+          ...data.getHeaders(),
         },
         data: data,
       },
