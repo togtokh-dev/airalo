@@ -29,7 +29,7 @@ describe("Airalo module", () => {
     const country = data.data?.[1];
     const operator = country?.operators?.[0];
     const pkg = operator?.packages?.[0];
-    console.log(pkg, "pkg");
+    console.log(pkg, "pkg_");
     firstPackageId = pkg?.id || null;
 
     console.log("First Package:", pkg);
