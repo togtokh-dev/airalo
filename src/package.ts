@@ -12,7 +12,12 @@ type ApiResponse<T> = {
   };
 };
 
-export const Packages = async (): Promise<{
+export const Packages = async (data: {
+  filter?: any;
+  limit?: number;
+  page?: number;
+  include?: string;
+}): Promise<{
   success: boolean;
   data: CountryData[];
   message: string;
@@ -28,6 +33,7 @@ export const Packages = async (): Promise<{
           "Content-Type": "application/json",
           Authorization: `Bearer ${config.token}`,
         },
+        params: data,
       },
       {
         name: "Packages",
