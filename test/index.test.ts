@@ -25,7 +25,7 @@ describe("Airalo module", () => {
   let firstPackageId: string | null = null;
 
   it("Get Packages", async () => {
-    const data = await Package.Packages();
+    const data = await Package.Packages({});
     const country = data.data?.[1];
     const operator = country?.operators?.[0];
     const pkg = operator?.packages?.[0];

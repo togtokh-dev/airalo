@@ -1,4 +1,6 @@
 import auth from "./auth";
+import Package from "./package";
+import Order from "./order";
 export const jsonToQueryString = (params: { [key: string]: any }) => {
   const query = Object.keys(params)
     .map(
@@ -45,18 +47,20 @@ export const setHost = (url: string) => {
   }
   console.log("Host set to:", url);
 };
-
 // Function to enable or disable logging
 export const setLogger = (status: boolean) => {
   config.logger = status;
   console.log("Logger status set to:", status);
 };
-export default {
+export const Airalo = {
   auth,
   config,
   ObjectId,
   setHost,
   setLogger,
+  Package,
+  Order,
 };
+export default Airalo;
 export { default as Package } from "./package";
 export { default as Order } from "./order";
