@@ -1,6 +1,7 @@
 import auth from "./auth";
 import Package from "./package";
 import Order from "./order";
+import Balance from "./balance";
 export const jsonToQueryString = (params: { [key: string]: any }) => {
   const query = Object.keys(params)
     .map(
@@ -60,7 +61,9 @@ export const Airalo = {
   setLogger,
   Package,
   Order,
+  Balance,
 };
 export default Airalo;
 export { default as Package } from "./package";
 export { default as Order } from "./order";
+export { default as Balance } from "./balance";
