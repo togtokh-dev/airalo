@@ -2,6 +2,7 @@ import auth from "./auth";
 import Package from "./package";
 import Order from "./order";
 import Balance from "./balance";
+import sims from "./sims";
 export const jsonToQueryString = (params: { [key: string]: any }) => {
   const query = Object.keys(params)
     .map(
@@ -62,8 +63,10 @@ export const Airalo = {
   Package,
   Order,
   Balance,
+  sims,
 };
 export default Airalo;
 export { default as Package } from "./package";
 export { default as Order } from "./order";
 export { default as Balance } from "./balance";
+export { default as sims } from "./sims";
